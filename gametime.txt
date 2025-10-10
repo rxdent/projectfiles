@@ -1,0 +1,100 @@
+Game: Very fragile pet
+
+The game is you have to take care of a very fragile pet, and almost anything and everything can kill it. Not fed on time? Dead. Not played with enough? Dead. House fire caused by pet? Dead.
+
+The game only ends when you reach a certain time without killing your pet.
+
+There are different items in the game that do different things, heal differently, and there is a shop to buy those things.
+
+You earn money by going to work but you have to bring your pet with you or it'll die. FYI there are things at work that can kill your pet.
+
+Use random module to start random events where pet tries to die again.
+
+------------------------------------------------------------------------------------------------
+
+Dying scenarios/other ideas:
+
+1: Hunger level reach 0 (died of starvation even though it was fed like 5 mins ago)
+2: Fun level reach 0 (Your pet was bored to death)
+3: Cleanliness level reach 0 (Your pet smells so bad it's own smell suffocated itself and it died)
+4: Bathroom level reach 0 (Your pets bladder exploded and it died)
+
+^ THIS IS A FUNCTION
+
+When at work the fun levels decrease faster.
+
+^ THIS IS A FUNCTION
+
+Other events:
+
+1: House fire caused by pet cooking food. Put fire out or pet dies
+2: Pet gambled too much and you lost all your money. 
+3: Pet binge-ate all your food and now you have to buy more food
+4: The pet god thinks your pet has been alive too long and is trying to kill him! Stop pet god!
+5: Your pet is doing math homework and the work is too hard on his brain! Do it for him before he dies!
+6: 
+7:
+8:
+9:
+10:
+
+^ THIS IS A FUNCTION
+
+
+Types of pets:
+
+1: Cigarette smoking mouse: Cleanliness doesn't bother mouse, but he spends your money buying cigarettes.
+2: Germaphone cat: Cat will entertain itself so you don't have to play with it, but if it's cleanliness reaches 50%, not 0, it dies.
+3: Clingy dog: Dog will never have cause trouble for owner (so some events will never happen ex: housefire) but dogs fun level goes down faster
+4: Attention-seeking bird: More events will occur at work because your bird wants attention but bird will never need to use the bathroom because it just goes anywhere.
+
+Specific pet events:
+
+1: Mouse is having withdrawl symptoms! Go to the store and buy a pack of cigarettes
+2: Cat got a speck of mud on it and it's cleanliness level drops down to 26%
+3: You didn't pet dog and now it thinks you hate him. Fun levels drop down to 1%
+4: Attention seeking bird flew into a window and now it has a concussion. Get to the vet!
+
+Work events:
+
+1: 
+2:
+3:
+4:
+5:
+
+------------------------------------------------------------------------------------------------
+
+Logic:
+
+n = input name (global variable)
+
+pets are variables in a list. (global)
+
+-------------------------
+
+function choose pet:
+
+    while choosing:
+
+        choice = input "choose pet!"
+
+        if choice in petlist:
+            print description of pet
+            yn = "want pet?"
+
+            if yn == "y":
+            print celebratory message
+            choosing = False
+
+            else:
+            Go back to pet selection screen
+
+        else:
+            print "not an option try again"
+            go back to selection screen
+
+    return choice
+
+-------------------------
+

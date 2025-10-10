@@ -20,7 +20,6 @@ while start == "start":
     option = ["link", "zelda", "ganon", "hylia", "beedle", "impa", "navi", "mipha", "urbosa", "daruk"]
     hint = ["The main character", "Her name in in the title of the game", "The main bad character", "The goddess of ___", "Has a large backpack", "Part of the sheikah tribe", "It's a fairy", "She's a fish", "She's really tall", "He eats rocks"]
     guesses = []
-    #word = (random.randint(0, (len(option)-1)))
     word = random.choice(option)
     wordindex = option.index(word)
     wordList = list(word)

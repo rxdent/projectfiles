@@ -1,5 +1,7 @@
 import datetime
+import os
 
+os.system("clear")
 tday = datetime.date.today()
 bday = datetime.date(2025,12,18)
 sbreak = datetime.date(2026,5,22)

@@ -52,7 +52,7 @@ Note: You cannot put coins in play more than you own. {MAGENTA}Press enter to co
         pcoinsadded = input("How many coins do you want to put in play?: ")
 
         try:
-            if int(pcoinsadded) <= sum(user_coins):
+            if 0 < int(pcoinsadded) <= sum(user_coins):
                 coins_in_play.append(pcoinsadded)
                 pcoins = "a"
             else:
@@ -69,7 +69,7 @@ Note: You cannot put coins in play more than you own. {MAGENTA}Press enter to co
     user_sum = 0 #The sum of the user amount
     comp_sum = 0 #The sum of the comp amount
 
-    while user_sum < 20 and comp_sum < 20:
+    while user_sum <= 20 and comp_sum <= 20:
 
         os.system("clear")
 
@@ -94,7 +94,7 @@ Note: You cannot put coins in play more than you own. {MAGENTA}Press enter to co
 
             else:
                 os.system("clear")
-                input("Please type {MAGENTA}Y or N only.{RESET} Press enter to continue...")
+                input(f"Please type {MAGENTA}Y or N only.{RESET} Press enter to continue...")
 
         if user_sum > 20:
             break
@@ -119,7 +119,7 @@ Note: You cannot put coins in play more than you own. {MAGENTA}Press enter to co
             input(f"\n{RED}Computer's{RESET} Amount: {GREEN}{comp_sum}{RESET}")
             cont = "y"
 
-    if user_sum >= 20:
+    if user_sum > 20:
         os.system("clear")
         total_coins = sum(user_coins)
         user_coins.clear()

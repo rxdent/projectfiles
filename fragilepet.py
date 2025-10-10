@@ -29,11 +29,6 @@ b = 100 #bathroom
 money = 150
 
 pet_food = []
-#Water
-#Medicine - Medicine should coded into speific medicines
-#Treats - Bone treat,thigmajig, thingamajig
-#Food 
-#Toys, robot should be an option 
 
 stats = { 
     "hunger": "h",
@@ -62,8 +57,7 @@ def choose_pet():
             yn = input("\nDo you want this pet? Type y for yes and anything else for no: ").lower()
             if yn == "y":
                 chosen_pet = pets_dict_list[int(choice)-1]
-                print(f"\nYou have selected {pets[int(choice)-1]}. What would you like to name it?\n")
-                pet_name = input("Name: ").capitalize()
+                input(f"\nYou have selected {pets[int(choice)-1]}. Good luck. You're going to need it. Press enter to continue...")
                 break
 
         else:
@@ -71,64 +65,38 @@ def choose_pet():
             input("Only type in numbers correspoding to the following pets. Press enter to continue...")
             os.system("clear")
 
-    return chosen_pet, pet_name #int of the dict list
+    return chosen_pet #int of the dict list
 
-def base_system(name):
-    os.system("clear")
-
+def base_system():
     global h, f, c, b, money, pet_food
-    playing = True
+    print(f"""\nYour stats:
+Hunger: {h}
+Fun: {f}
+Cleanliness: {c}
+Bathroom: {b}
+Wallet: ${money}""")
 
-    while playing == True:
-        screen = True
-        os.system("clear")
+    while h > 0 and f > 0 and c > 0 and b >0:
+        task = input("Task: ").lower
 
-        print(f"""Choose from the following commands:                                       {name}'s stats:
-\nfeed: Feed pet                                                            Hunger: {h}
-play: Play with pet                                                       Fun: {f}
-bath: Bathe pet                                                           Cleanliness: {c}
-take outside: Let pet use the bathroom                                    Bathroom: {b}
-shop: Go to the store                                                     Wallet: ${money}
-go to work: Go to work""")
+        if task == "feed":
+            print(f"Your food: {pet_food}\n")
+            print("Select something from the shelf!")
 
-        while h > 0 and f > 0 and c > 0 and b > 0 and screen == True:
-            task = input("\nTask: ").lower()
+        elif task == "play":
+            f = +15
+            print(f"You played with pet! Pet's fun level went up by 15.")
 
-            if task == "feed":
-                os.system("clear")
-                print(f"Your food: {pet_food}\n")
-                input("Select something from the shelf!")
-                screen = False
+        elif task == "bath":
+            c = +30
+            print("You bathed pet! Pet's cleanliness level went up by 30.")
 
-            elif task == "play":
-                os.system("clear")
-                f += 15
-                input(f"You played with {name}! {name}'s fun level went up by 15. Press enter to continue...")
-                screen = False
+        elif task =="take outside":
+            b = +50
+            print("You let pet outside... pets bathroom level went up by 50.")
 
-            elif task == "bath":
-                os.system("clear")
-                c += 30
-                input(f"You bathed {name}! {name}'s cleanliness level went up by 30. Press enter to continue...")
-                screen = False
-
-            elif task == "take outside":
-                os.system("clear")
-                b += 50
-                input(f"You let {name} outside... {name}'s bathroom level went up by 50. Press enter to continue...")
-                screen = False
-            
-            elif task == "go to work":
-                work()
-
-            # elif task =="quit":
-            #     playing = False
-            #     os.system("clear")
-            #     playing = input("Are you sure you want to quit? Type Y for yes and anything else for no.").lower()
-            #     break
-
-            else:
-                screen = False
+        else:
+            continue
 
 def randevent(): #FIGURE THIS OUT LATER
     global h, f, c, b, money 
@@ -151,27 +119,15 @@ Wallet: ${money}""")
 
 
 def eventintervals():
-    intervals = random.uniform(5,15) #seconds between each event
+    intervals = random.uniform(5,30) #seconds between each event
     time.sleep(intervals)
     os.system("clear")
     print("EVENT OCCURING...\n")
     randevent()
 
 
-def work():
-    car = ["🚗"]
-    os.system("clear")
-    for i in range(10):
-        time.sleep(0.5)
-        os.system("clear")
-        print("  ".join(car))
-        car.append("💨")
-    input("Arrived at work! Press enter to continue... (Also don't drink and drive, get that beer out of your hand)")
-    
-    
-    
-    
-    
+
+
 def program():
     input("Welcome to FRAGILE PET. Anything and everything is trying to kill your pet, so make sure you keep your pets need cared for, and try to avoid any sudden events! Press enter to continue...")
     os.system("clear")
@@ -186,23 +142,22 @@ You can also buy potions in the shop to restore these values.
 
 You need money to buy things, so go to work! You must bring your pet with you, and who knows what mischief they'll get into...
 
-YOU CAN ONLY INPUT A TASK EVERY 10 SECONDS
-EVENTS OCCUR EVERY 5-15 SECONDS.
+Commands:
+"feed" = Feed pet
+"play" = Play with pet
+"bath" = bathe pet
+"take outside" = Let pet use the bathroom
+"work" = Go to work
 
-Press enter to continue... """)
+Press enter to continue """)
 
     global n
     os.system("clear")
     n = input("\nEnter your name: ")
-    pet_name = (choose_pet()[1])
-    # playing = "n"
-    base_system(pet_name)
-    # if playing == "y":
-    #     print("Program quitted.")
-    # else:
-    #     playing = True
-    #     os.system("clear")
-    #     base_system(pet_name)
+
+    choose_pet()
+    randevent()
+
 
 
 

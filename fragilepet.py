@@ -84,6 +84,7 @@ def animation(place):
 
 def store():
     animation("the store")
+    
 
     pass
 
@@ -138,6 +139,7 @@ Wallet: ${money}""")
 "commands" Shows commands''')
         elif task == "store":
             store()
+
         else:
             continue
 

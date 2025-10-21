@@ -1,6 +1,7 @@
 import os
 import random
 import time
+import threading
 os.system("clear")
 
 pets = ["Cigarette-smoking mouse", "Germaphone cat", "Clingy dog", "Attention-seeking bird"]
@@ -38,6 +39,8 @@ stats = {
     "cost": "money"
     }
 
+playing = True
+
 def choose_pet():
     os.system("clear")
 
@@ -67,34 +70,74 @@ def choose_pet():
 
     return chosen_pet #int of the dict list
 
+
+def animation(place):
+    car = ["🚗"]
+    os.system("clear")
+    for i in range(10):
+        time.sleep(0.5)
+        os.system("clear")
+        print("  ".join(car))
+        car.append("💨")
+    input(f"Arrived at {place}! Press enter to continue...")
+
+
+def store():
+    animation("the store")
+
+    pass
+
+
 def base_system():
     global h, f, c, b, money, pet_food
-    print(f"""\nYour stats:
+
+    stats = (f"""\nYour stats:
 Hunger: {h}
 Fun: {f}
 Cleanliness: {c}
 Bathroom: {b}
 Wallet: ${money}""")
+    print(stats)
+
 
     while h > 0 and f > 0 and c > 0 and b >0:
-        task = input("Task: ").lower
+        task = input("Task: ").lower()
 
         if task == "feed":
+            os.system("clear")
             print(f"Your food: {pet_food}\n")
             print("Select something from the shelf!")
+            print(stats)
 
         elif task == "play":
+            os.system("clear")
             f = +15
             print(f"You played with pet! Pet's fun level went up by 15.")
+            print(stats)
 
         elif task == "bath":
+            os.system("clear")
             c = +30
             print("You bathed pet! Pet's cleanliness level went up by 30.")
+            print(stats)
 
         elif task =="take outside":
+            os.system("clear")
             b = +50
             print("You let pet outside... pets bathroom level went up by 50.")
+            print(stats)
 
+        elif task == "commands":
+            os.system("clear")
+            print('''Commands:\n
+"feed" = Feed pet
+"play" = Play with pet
+"bath" = bathe pet
+"take outside" = Let pet use the bathroom
+"work" = Go to work
+"commands" Shows commands''')
+        elif task == "store":
+            store()
         else:
             continue
 
@@ -109,21 +152,24 @@ def randevent(): #FIGURE THIS OUT LATER
         if key in stats: #if the key of the event is in the stats
             var_name = stats[key] #access the value inside the key
             globals()[var_name] += value #and and or subtract the amount from value. THIS CHANGES THE GLOBAL VARIABLE
-    print(f"""\nYour stats:
-Hunger: {h}
-Fun: {f}
-Cleanliness: {c}
-Bathroom: {b}
-Wallet: ${money}""")
+#     print(f"""\nYour stats:
+# Hunger: {h}
+# Fun: {f}
+# Cleanliness: {c}
+# Bathroom: {b}
+# Wallet: ${money}""")
+
+    base_system()
 
 
 
 def eventintervals():
-    intervals = random.uniform(5,30) #seconds between each event
-    time.sleep(intervals)
-    os.system("clear")
-    print("EVENT OCCURING...\n")
-    randevent()
+    while playing == True:
+        intervals = random.uniform(1,5) #seconds between each event
+        time.sleep(intervals)
+        os.system("clear")
+        print("EVENT OCCURING...\n")
+        randevent()
 
 
 
@@ -148,6 +194,7 @@ Commands:
 "bath" = bathe pet
 "take outside" = Let pet use the bathroom
 "work" = Go to work
+"commands" = Shows commands
 
 Press enter to continue """)
 
@@ -156,7 +203,8 @@ Press enter to continue """)
     n = input("\nEnter your name: ")
 
     choose_pet()
-    randevent()
+    #threading.Thread(target=eventintervals).start()
+    base_system()
 
 
 
